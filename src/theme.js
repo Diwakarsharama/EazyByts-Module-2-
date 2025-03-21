@@ -1,5 +1,5 @@
-import React, { createContext, useState, useMemo } from "react";
-import { createTheme, ThemeProvider, CssBaseline } from "@mui/material/";
+import { createContext, useState, useMemo } from "react";
+import { createTheme } from "@mui/material/";
 
 // Color design tokens
 export const tokens = (mode) => ({
@@ -27,6 +27,39 @@ export const tokens = (mode) => ({
           800: "#080b12",
           900: "#040509",
         },
+        greenAccent: {
+          100: "#a3e3a3",
+          200: "#79c879",
+          300: "#4fa04f",
+          400: "#2e7a2e",
+          500: "#1c541c",
+          600: "#144114",
+          700: "#0c2e0c",
+          800: "#061b06",
+          900: "#031003",
+        },
+        blueAccent: {
+          100: "#a3d1e8",
+          200: "#79b6d0",
+          300: "#4f9bc8",
+          400: "#2e7fa0",
+          500: "#1c6581",
+          600: "#144c62",
+          700: "#0c3450",
+          800: "#06273d",
+          900: "#03172a",
+        },
+        redAccent: {
+          100: "#f59c9c",
+          200: "#f07575",
+          300: "#e74f4f",
+          400: "#d52a2a",
+          500: "#b31717",
+          600: "#8c1010",
+          700: "#670b0b",
+          800: "#440707",
+          900: "#2a0303",
+        },
       }
     : {
         grey: {
@@ -51,6 +84,39 @@ export const tokens = (mode) => ({
           200: "#a1a4ab",
           100: "#d0d1d5",
         },
+        greenAccent: {
+          100: "#a3e3a3",
+          200: "#79c879",
+          300: "#4fa04f",
+          400: "#2e7a2e",
+          500: "#1c541c",
+          600: "#144114",
+          700: "#0c2e0c",
+          800: "#061b06",
+          900: "#031003",
+        },
+        blueAccent: {
+          100: "#a3d1e8",
+          200: "#79b6d0",
+          300: "#4f9bc8",
+          400: "#2e7fa0",
+          500: "#1c6581",
+          600: "#144c62",
+          700: "#0c3450",
+          800: "#06273d",
+          900: "#03172a",
+        },
+        redAccent: {
+          100: "#f59c9c",
+          200: "#f07575",
+          300: "#e74f4f",
+          400: "#d52a2a",
+          500: "#b31717",
+          600: "#8c1010",
+          700: "#670b0b",
+          800: "#440707",
+          900: "#2a0303",
+        },
       }),
 });
 
@@ -62,7 +128,9 @@ export const themeSettings = (mode) => {
     palette: {
       mode: mode,
       primary: { main: colors.primary[500] },
-      background: { default: mode === "dark" ? colors.primary[500] : "#fcfcfc" },
+      background: {
+        default: mode === "dark" ? colors.primary[500] : "#fcfcfc",
+      },
     },
     typography: {
       fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
@@ -95,17 +163,3 @@ export const useMode = () => {
 
   return [theme, colorMode];
 };
-
-// Example Usage in App.js
-export default function App() {
-  const [theme, colorMode] = useMode();
-
-  return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        < CssBaseline/>
-        {/* Your Components */}
-      </ThemeProvider>
-    </ColorModeContext.Provider>
-  );
-}
